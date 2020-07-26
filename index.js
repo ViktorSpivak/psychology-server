@@ -2,8 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
-const getContacts = require("./routing/getContacts");
-const editContacts = require("./routing/editContacts");
+const requestHandler = require("./routing/requestHandler");
+
 require("dotenv").config();
 
 const URLdb = process.env.URLdb;
@@ -17,6 +17,7 @@ module.exports = class myMongoDBServer {
     this.initServer();
     this.initMiddlewares();
     this.initRoutes();
+    this.initErrorHandler();
     await this.initDataBase();
     this.startListening();
   }
@@ -30,8 +31,15 @@ module.exports = class myMongoDBServer {
     this.server.use(morgan("combined"));
   };
   initRoutes = () => {
-    this.server.use("/contacts", getContacts);
-    this.server.use("/contacts", editContacts);
+    this.server.use("/", requestHandler);
+    // this.server.use("/contacts", getContacts);
+    // this.server.use("/contacts", editContacts);
+  };
+  initErrorHandler = () => {
+    this.server.use((err, req, res, next) => {
+      console.error("Error:", err.message);
+      res.status(500).send("Something broke!");
+    });
   };
   initDataBase = async () => {
     try {

@@ -1,3 +1,3 @@
-const myMongoDBServer = require("./start");
+const myMongoDBServer = require("./index");
 
 new myMongoDBServer().start();
