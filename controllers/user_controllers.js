@@ -10,7 +10,7 @@ const { sendEmail } = require("../helpers/email-sender");
 
 exports.testUser = (req, res, next) => {
   try {
-    console.log(req.body);
+    console.log(req);
     res.json(req.body);
   } catch (error) {
     next(error);

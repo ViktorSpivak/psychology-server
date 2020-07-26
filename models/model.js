@@ -4,8 +4,8 @@ const { Schema } = mongoose;
 mongoose.set("useFindAndModify", false);
 const itemSchema = new Schema({
   email: String,
-  firstName: String,
-  lastName: String,
+  name: String,
+  phone: String,
   text: String,
 });
 itemSchema.plugin(mongoosePaginate);
