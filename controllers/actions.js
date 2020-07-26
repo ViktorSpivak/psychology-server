@@ -2,11 +2,11 @@ const itemModel = require("../models/model");
 
 class Controller {
   // findEmail = (value) => itemModel.findOne({ email: value });
-  writeUser = (email, firstName, lastName, text) =>
+  writeUser = (email, name, phone, text) =>
     itemModel.create({
       email,
-      firstName,
-      lastName,
+      name,
+      phone,
       text,
     });
 

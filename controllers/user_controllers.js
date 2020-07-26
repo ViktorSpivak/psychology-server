@@ -42,16 +42,7 @@ exports.createUser = async (req, res, next) => {
     // const avatarURL = `http://localhost:3001/images/${avatarFileName}`;
 
     // const passwordHash = await authActions.passwordHash(password);
-    const user = await actions.writeUser(
-      // passwordHash,
-      email,
-      name,
-      phone,
-      text
-      // subscription,
-      // avatarURL,
-      // otpCode
-    );
+    const user = await actions.writeUser(email, name, phone, text);
     // const token = authActions.createToken(user._id);
     // await actions.findAndUpdate(user._id, { token });
     const msg = {
