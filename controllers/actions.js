@@ -10,10 +10,10 @@ class Controller {
       text,
     });
 
-  // findAll = (page, limit, sort) => {
-  //   const options = limit && { page, limit, sort };
-  //   return itemModel.paginate({}, options);
-  // };
+  findAll = (page, limit, sort) => {
+    const options = limit && { page, limit, sort };
+    return itemModel.paginate({}, options);
+  };
 
   // findAndUpdate = (id, newProperties) =>
   //   itemModel.findByIdAndUpdate(id, { $set: newProperties }, { new: true });

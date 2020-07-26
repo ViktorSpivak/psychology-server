@@ -7,7 +7,8 @@ const itemSchema = new Schema({
   firstName: String,
   lastName: String,
   text: String,
+  date:
 });
 itemSchema.plugin(mongoosePaginate);
-const itemModel = mongoose.model("clients+Requests", itemSchema);
+const itemModel = mongoose.model("clients+requests", itemSchema);
 module.exports = itemModel;

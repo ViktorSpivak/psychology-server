@@ -10,9 +10,17 @@ const { sendEmail } = require("../helpers/email-sender");
 
 exports.testUser = (req, res, next) => {
   try {
-    // console.log(req.body);
+    console.log(req.body);
     res.json(req.body);
-    // res.end(`<p>Hello</p>`);
+  } catch (error) {
+    next(error);
+  }
+};
+exports.getRequests = async (req, res, next) => {
+  try {
+    const { page, limit, sort } = req.query;
+    const item = await actions.findAll(page, limit, sort);
+    return res.status(200).json(item.docs);
   } catch (error) {
     next(error);
   }
