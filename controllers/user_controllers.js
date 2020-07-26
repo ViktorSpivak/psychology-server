@@ -27,7 +27,7 @@ exports.getRequests = async (req, res, next) => {
 };
 exports.createUser = async (req, res, next) => {
   try {
-    const { firstName, email, lastName, text } = req.body;
+    const { name, email, phone, text } = req.body;
     // const isEmail = await actions.findEmail(email);
     // if (!isEmail) {
     // const userAvatar = await createAvatar(email);
@@ -45,8 +45,8 @@ exports.createUser = async (req, res, next) => {
     const user = await actions.writeUser(
       // passwordHash,
       email,
-      firstName,
-      lastName,
+      name,
+      phone,
       text
       // subscription,
       // avatarURL,
