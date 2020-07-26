@@ -12,7 +12,7 @@ exports.testUser = (req, res, next) => {
   try {
     console.log(req.body);
     res.json(req.body);
-    res.end(`<p>Hello</p>`);
+    // res.end(`<p>Hello</p>`);
   } catch (error) {
     next(error);
   }
