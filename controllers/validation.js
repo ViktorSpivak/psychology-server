@@ -12,7 +12,6 @@ class Validations {
     if (validationResult.error) {
       return res.status(422).json({ message: "Missing required field" });
     }
-    console.log("valid");
     next();
   };
 }
