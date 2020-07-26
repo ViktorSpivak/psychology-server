@@ -58,9 +58,7 @@ exports.createUser = async (req, res, next) => {
       to: "spivakmailbox@gmail.com",
       from: "bill",
       subject: "Request from user",
-      html: `<h1>Text from user<h1><p>Name: ${
-        (firstName, lastName)
-      }</p><p>Email:${email}</p><p>${text}</p>`,
+      html: `<h1>Text from user<h1><p>Name: ${name}</p><p>Email:${email}</p><p>${text}</p>`,
     };
     // sendEmail(msg);
     return res.json("ok");
