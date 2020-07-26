@@ -7,7 +7,6 @@ const itemSchema = new Schema({
   firstName: String,
   lastName: String,
   text: String,
-  date:
 });
 itemSchema.plugin(mongoosePaginate);
 const itemModel = mongoose.model("clients+requests", itemSchema);
