@@ -10,7 +10,7 @@ class Validations {
     });
     const validationResult = rules.validate(req.body);
     if (validationResult.error) {
-      return res.status(422).json({ message: "Missing required field" });
+      return res.status(421).json({ message: "Missing required field" });
     }
     next();
   };
