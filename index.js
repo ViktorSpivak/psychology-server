@@ -7,7 +7,7 @@ const requestHandler = require("./routing/requestHandler");
 require("dotenv").config();
 
 const URLdb = process.env.URLdb;
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 99;
 
 module.exports = class myMongoDBServer {
   constructor() {
@@ -32,7 +32,7 @@ module.exports = class myMongoDBServer {
   };
   initRoutes = () => {
     this.server.use("/", requestHandler);
-    // this.server.use("/contacts", getContacts);
+    this.server.use("/get", requestHandler);
     // this.server.use("/contacts", editContacts);
   };
   initErrorHandler = () => {
@@ -57,7 +57,7 @@ module.exports = class myMongoDBServer {
     // db.on("error", console.log(ERRoR));
   };
   startListening = () => {
-    this.server.listen(3001, () => {
+    this.server.listen(PORT, () => {
       console.log("myMongoDBServer listening on port:", PORT);
     });
   };

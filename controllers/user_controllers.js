@@ -7,6 +7,15 @@ const actions = require("./actions");
 // const multer = require("multer");
 
 const { sendEmail } = require("../helpers/email-sender");
+
+exports.testUser = (req, res, next) => {
+  try {
+    console.log(req.body);
+    res.json(req.body);
+  } catch (error) {
+    next(error);
+  }
+};
 exports.createUser = async (req, res, next) => {
   try {
     const { firstName, email, lastName, text } = req.body;
@@ -44,7 +53,7 @@ exports.createUser = async (req, res, next) => {
         (firstName, lastName)
       }</p><p>Email:${email}</p><p>${text}</p>`,
     };
-    sendEmail(msg);
+    // sendEmail(msg);
     return res.json("ok");
     // console.log(result);
     // res.redirect("/api/opt");
