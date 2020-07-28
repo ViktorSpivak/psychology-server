@@ -47,7 +47,7 @@ module.exports = class myMongoDBServer {
         useNewUrlParser: true,
         useUnifiedTopology: true,
       });
-      console.log("Database connection successful:", URLdb);
+      console.log("Database connection successful!");
     } catch (error) {
       console.log("Connecting error:", error.message);
       process.exit(1);
