@@ -5,7 +5,7 @@ const nodemailer = require("nodemailer");
 
 exports.sendEmail = async (msg) => await sgMail.send(msg);
 exports.sendEmailNodeMailer = async (msg) => {
-  let testEmailAccount = await nodemailer.createTestAccount();
+  let testAccount = await nodemailer.createTestAccount();
   // console.log(testEmailAccount.user, testEmailAccount.pass);
   let transporter = nodemailer.createTransport({
     host: "smtp.ethereal.email",
