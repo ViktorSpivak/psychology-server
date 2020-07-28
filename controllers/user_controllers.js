@@ -5,9 +5,9 @@ const actions = require("./actions");
 // const multer = require("multer");
 const sendEmail = require("../helpers/email-sender");
 
-exports.testUser = (req, res, next) => {
+exports.testUser = async (req, res, next) => {
   try {
-    sendEmail.sendEmailNodeMailer(req.body);
+    await sendEmail.sendEmailNodeMailer(req.body);
     res.json(req.body);
   } catch (error) {
     next(error);
