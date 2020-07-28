@@ -55,7 +55,9 @@ exports.createUser = async (req, res, next) => {
       subject: "Request from user",
       html: `<h1>Massage from client<h1><p>Name: ${name}</p><p>Phone: ${phone}</p><p>Email: ${email}</p><p> Massage: ${text}</p>`,
     };
-    sendEmail(msg).catch((err) => console.log("Sendgrid error:", err));
+    sendEmail(msg)
+      .then((res) => console.log("Sendgrid response: ", res))
+      .catch((err) => console.log("Sendgrid error: ", err));
 
     return res.json("ok");
     // console.log(result);
