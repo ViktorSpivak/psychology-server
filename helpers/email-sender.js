@@ -5,15 +5,15 @@ const nodemailer = require("nodemailer");
 
 exports.sendEmail = async (msg) => await sgMail.send(msg);
 exports.sendEmailNodeMailer = async (msg) => {
-  // let testEmailAccount = await nodemailer.createTestAccount();
+  let testEmailAccount = await nodemailer.createTestAccount();
   // console.log(testEmailAccount.user, testEmailAccount.pass);
   let transporter = nodemailer.createTransport({
     host: "smtp.ethereal.email",
     port: 587,
     secure: false,
     auth: {
-      user: "oicsttvusdtp67kw@ethereal.email",
-      pass: "FdpXhc2wFJEKWaVmhy",
+      user: testAccount.user,
+      pass: testAccount.pass,
     },
     tls: {
       rejectUnauthorized: false,
