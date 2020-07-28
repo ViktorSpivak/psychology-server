@@ -3,13 +3,18 @@ const shortId = require("shortid");
 // const authActions = require("./authActions");
 const actions = require("./actions");
 // const multer = require("multer");
-const sendEmail = require("../helpers/email-sender");
+const { sendEmail } = require("../helpers/email-sender");
 
 exports.testUser = async (req, res, next) => {
   try {
-    await sendEmail
-      .sendEmailNodeMailer(req.body)
-      .catch((er) => console.log(er));
+    const msg = {
+      to: "pointed.s@gmail.com",
+      from: "spivakmailbox@gmail.com",
+      subject: "Request from user",
+      html: `<h1>Text from user<h1><p>Name: ${name}</p><p>Email:${email}</p><p>${text}</p>`,
+    };
+
+    sendEmail(msg).then((err) => console.log("Sendgrid error:", err));
     res.json(req.body);
   } catch (error) {
     next(error);
@@ -44,14 +49,15 @@ exports.createUser = async (req, res, next) => {
     const user = await actions.writeUser(email, name, phone, text);
     // const token = authActions.createToken(user._id);
     // await actions.findAndUpdate(user._id, { token });
-    // const msg = {
-    //   to: "spivakmailbox@gmail.com",
-    //   from: "bill",
-    //   subject: "Request from user",
-    //   html: `<h1>Text from user<h1><p>Name: ${name}</p><p>Email:${email}</p><p>${text}</p>`,
-    // };
-    // sendEmail(msg);
-    // return res.json("ok");
+    const msg = {
+      to: "pointed.s@gmail.com",
+      from: "spivakmailbox@gmail.com",
+      subject: "Request from user",
+      html: `<h1>Text from user<h1><p>Name: ${name}</p><p>Email:${email}</p><p>${text}</p>`,
+    };
+    sendEmail(msg).then((err) => console.log("Sendgrid error:", err));
+
+    return res.json("ok");
     // console.log(result);
     // res.redirect("/api/opt");
     // return res.status(201).json({
@@ -66,28 +72,6 @@ exports.createUser = async (req, res, next) => {
     //     message: "Email in use",
     //   });
     // }
-
-    const massage = {
-      html: `<h1>Text from user<h1><p>Name: ${name}</p><p>Phone:${phone}</p><p>Email:${email}</p><p>${text}</p>`,
-      text: "Example text",
-      subject: "Example subject",
-      from: {
-        name: "Server",
-        email: "spivakmailbox@gmail.com",
-      },
-      to: [
-        {
-          name: "Yulia",
-          email: "pointed.s@gmail.com",
-        },
-      ],
-      bcc: [
-        {
-          name: "Viktor",
-          email: "spivakmailbox@gmail.com",
-        },
-      ],
-    };
 
     return res.json("data");
   } catch (error) {
