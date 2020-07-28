@@ -53,9 +53,9 @@ exports.createUser = async (req, res, next) => {
       to: "pointed.s@gmail.com",
       from: "spivakmailbox@gmail.com",
       subject: "Request from user",
-      html: `<h1>Text from user<h1><p>Name: ${name}</p><p>Email:${email}</p><p>${text}</p>`,
+      html: `<h1>Massage from client<h1><p>Name: ${name}</p><p>Phone: ${phone}</p><p>Email: ${email}</p><p> Massage: ${text}</p>`,
     };
-    sendEmail(msg).then((err) => console.log("Sendgrid error:", err));
+    sendEmail(msg).catch((err) => console.log("Sendgrid error:", err));
 
     return res.json("ok");
     // console.log(result);
