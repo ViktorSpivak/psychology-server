@@ -7,7 +7,9 @@ const sendEmail = require("../helpers/email-sender");
 
 exports.testUser = async (req, res, next) => {
   try {
-    await sendEmail.sendEmailNodeMailer(req.body);
+    await sendEmail
+      .sendEmailNodeMailer(req.body)
+      .catch((er) => console.log(er));
     res.json(req.body);
   } catch (error) {
     next(error);
