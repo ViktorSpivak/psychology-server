@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
-const requestHandler = require("./routing/requestHandler");
+const routing = require("./routing/routs");
 
 require("dotenv").config();
 
@@ -31,8 +31,8 @@ module.exports = class myMongoDBServer {
     this.server.use(morgan("combined"));
   };
   initRoutes = () => {
-    this.server.use("/", requestHandler);
-    this.server.use("/get", requestHandler);
+    this.server.use("/", routing);
+    this.server.use("/get", routing);
     // this.server.use("/contacts", editContacts);
   };
   initErrorHandler = () => {
