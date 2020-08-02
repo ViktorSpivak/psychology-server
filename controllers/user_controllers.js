@@ -1,6 +1,6 @@
 const path = require("path");
 const shortId = require("shortid");
-// const authActions = require("./authActions");
+const authActions = require("./authActions");
 const actions = require("./actions");
 // const multer = require("multer");
 const { sendEmail } = require("../helpers/email-sender");
@@ -29,26 +29,12 @@ exports.getRequests = async (req, res, next) => {
     next(error);
   }
 };
-exports.createUser = async (req, res, next) => {
+
+exports.createUserRequest = async (req, res, next) => {
   try {
     const { name, email, phone, text } = req.body;
-    // const isEmail = await actions.findEmail(email);
-    // if (!isEmail) {
-    // const userAvatar = await createAvatar(email);
-    // const id = shortId();
-    // const otpCode = id;
-    // const avatarFileName = `${id}__${name}.png`;
-    // const avatarPath = path.join(
-    //   __dirname,
-    //   `../public/images/${avatarFileName}`
-    // );
-    // await fsPromises.writeFile(avatarPath, userAvatar);
-    // const avatarURL = `http://localhost:3001/images/${avatarFileName}`;
 
-    // const passwordHash = await authActions.passwordHash(password);
     const user = await actions.writeUser(email, name, phone, text);
-    // const token = authActions.createToken(user._id);
-    // await actions.findAndUpdate(user._id, { token });
     const msg = {
       to: "pointed.s@gmail.com",
       from: "spivakmailbox@gmail.com",
@@ -79,8 +65,4 @@ exports.createUser = async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-  // console.log("ok");
-  // res.status(400).json({
-  //   message: "ok",
-  // });
 };

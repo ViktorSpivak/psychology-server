@@ -3,6 +3,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 const routing = require("./routing/routs");
+const authRouting = require("./auth/authentication");
 
 require("dotenv").config();
 
@@ -33,6 +34,7 @@ module.exports = class myMongoDBServer {
   initRoutes = () => {
     this.server.use("/", routing);
     this.server.use("/get", routing);
+    this.server.use("/auth", authRouting);
     // this.server.use("/contacts", editContacts);
   };
   initErrorHandler = () => {

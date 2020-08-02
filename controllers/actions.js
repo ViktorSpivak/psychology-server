@@ -9,7 +9,13 @@ class Controller {
       phone,
       text,
     });
-
+  createUser = (passwordHash, email, name, subscription) =>
+    itemModel.create({
+      name,
+      email,
+      password: passwordHash,
+      subscription,
+    });
   findAll = (page, limit, sort) => {
     const options = limit && { page, limit, sort };
     return itemModel.paginate({}, options);
