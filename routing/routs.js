@@ -8,11 +8,13 @@ router.post(
   validation.validateRequest,
   userControllers.createUserRequest
 );
+
 router.post(
   "/sendEmail",
   //  validation.validateRequest,
   userControllers.testUser
 );
+
 router.get("/requests", userControllers.getRequests);
 // router.post("/login", (req, res, next) => res.json(`Login:${req.body.name}`));
 // router.post("/logout", (req, res, next) => res.json("logout"));

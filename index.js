@@ -8,6 +8,7 @@ const authRouting = require("./auth/authentication");
 require("dotenv").config();
 
 const URLdb = process.env.URLdb;
+const URLadmindb = process.env.URLadmindb;
 const PORT = process.env.PORT || 99;
 
 module.exports = class myMongoDBServer {
@@ -49,7 +50,12 @@ module.exports = class myMongoDBServer {
         useNewUrlParser: true,
         useUnifiedTopology: true,
       });
-      console.log("Database connection successful!");
+      console.log("Database Post connection successful!");
+      await mongoose.connect(URLadmindb, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      });
+      console.log("Database Admin connection successful!");
     } catch (error) {
       console.log("Connecting error:", error.message);
       process.exit(1);

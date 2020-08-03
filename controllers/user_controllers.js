@@ -1,6 +1,6 @@
 const path = require("path");
 const shortId = require("shortid");
-const authActions = require("./authActions");
+const authActions = require("../auth/authActions");
 const actions = require("./actions");
 // const multer = require("multer");
 const { sendEmail } = require("../helpers/email-sender");

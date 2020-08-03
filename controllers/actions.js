@@ -1,29 +1,33 @@
 const itemModel = require("../models/model");
 
 class Controller {
-  // findEmail = (value) => itemModel.findOne({ email: value });
+  findEmail = (value) => itemModel.itemModelAdmin.findOne({ email: value });
   writeUser = (email, name, phone, text) =>
-    itemModel.create({
+    itemModel.itemModelPost.create({
       email,
       name,
       phone,
       text,
     });
-  createUser = (passwordHash, email, name, subscription) =>
-    itemModel.create({
+  createUser = (passwordHash, email, name, otpCode) =>
+    itemModel.itemModelAdmin.create({
       name,
       email,
       password: passwordHash,
-      subscription,
+      otpCode,
     });
   findAll = (page, limit, sort) => {
     const options = limit && { page, limit, sort };
-    return itemModel.paginate({}, options);
+    return itemModel.itemModelPost.paginate({}, options);
   };
 
-  // findAndUpdate = (id, newProperties) =>
-  //   itemModel.findByIdAndUpdate(id, { $set: newProperties }, { new: true });
-  // findAndDelete = (id) => itemModel.findOneAndDelete(id);
-  // findById = (id) => itemModel.findById(id);
+  findAndUpdate = (id, newProperties) =>
+    itemModel.itemModelAdmin.findByIdAndUpdate(
+      id,
+      { $set: newProperties },
+      { new: true }
+    );
+  findAndDelete = (id) => itemModel.itemModelPost.findOneAndDelete(id);
+  findById = (id) => itemModel.itemModelPost.findById(id);
 }
 module.exports = new Controller();
