@@ -3,4 +3,6 @@ require("dotenv").config();
 sgMail.setApiKey(process.env.KEY_SEND);
 
 exports.sendEmail = async (msg) =>
-  await sgMail.send(msg).catch((err) => console.log("Sendgrid err: ", err));
+  await sgMail
+    .send(msg)
+    .catch((err) => console.log("Sendgrid err: ", err.response.body));

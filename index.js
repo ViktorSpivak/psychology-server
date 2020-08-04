@@ -31,18 +31,6 @@ module.exports = class myMongoDBServer {
     this.server.use(express.urlencoded({ extended: true }));
     this.server.use(cors());
     this.server.use(morgan("combined"));
-    this.server.use((req, res, next) => {
-      res.setHeader("Access-Control-Allow-Origin", "*"); // Change later to only allow our server
-      res.setHeader(
-        "Access-Control-Allow-Methods",
-        "GET, POST, PUT, PATCH, DELETE"
-      );
-      res.setHeader(
-        "Access-Control-Allow-Headers",
-        "Content-Type, Authorization"
-      );
-      next();
-    });
   };
   initRoutes = () => {
     this.server.use("/", routing);
@@ -79,7 +67,6 @@ module.exports = class myMongoDBServer {
   startListening = () => {
     this.server.listen(PORT, () => {
       console.log("myMongoDBServer listening on port:", PORT);
-      console.log(process.env.NODE_ENV);
     });
   };
 };

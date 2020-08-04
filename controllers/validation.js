@@ -61,7 +61,7 @@ class Validations {
           to: email,
           from: "spivakmailbox@gmail.com",
           subject: "Verification email",
-          html: `<p>For complete verification  enter the code ${newOtpCode} again :)</p><form action='http://localhost:99/auth/otp?email=${email}' method="post"><input  name="otpCode" placeholder="Enter code"></input><button type="submit">Click to confirm</button></form>`,
+          html: `<p>For complete verification  enter the code ${newOtpCode} again :)</p><form action='psychology-server.herokuapp.com/auth/otp?email=${email}' method="post"><input  name="otpCode" placeholder="Enter code"></input><button type="submit">Click to confirm</button></form>`,
         };
         sendEmail(msg);
         return res.send(
