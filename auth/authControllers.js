@@ -1,11 +1,8 @@
 const path = require("path");
-
 const fsPromises = require("fs").promises;
 const shortId = require("shortid");
 const authActions = require("./authActions");
 const actions = require("../controllers/actions");
-// const multer = require("multer");
-// const { createAvatar } = require("../helpers/avatar-builder");
 const { sendEmail } = require("../helpers/email-sender");
 
 exports.createUser = async (req, res, next) => {

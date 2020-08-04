@@ -10,17 +10,11 @@ const itemSchemaPost = new Schema({
 });
 itemSchemaPost.plugin(mongoosePaginate);
 exports.itemModelPost = mongoose.model("clients+requests", itemSchemaPost);
-// module.exports = itemModelPost;
 
 const itemSchemaAdmin = new Schema({
   email: String,
   name: String,
   password: String,
-  // subscription: {
-  //   type: String,
-  //   enum: ["free", "pro", "premium"],
-  //   default: "free",
-  // },
   token: String,
   otpCode: String,
   registered: { type: Boolean, default: false },
