@@ -67,6 +67,7 @@ module.exports = class myMongoDBServer {
   startListening = () => {
     this.server.listen(PORT, () => {
       console.log("myMongoDBServer listening on port:", PORT);
+      console.log(process.env.NODE_ENV);
     });
   };
 };
